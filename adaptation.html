@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>adasum - Papers</title>
+        <title>adaptation - Papers</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Articles through the ages">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item expanded "><a href="adasum.html" class="active"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="adaptation.html"><strong aria-hidden="true">1.3.</strong> adaptation</a></li></ol></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">2.</strong> scheduling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item expanded "><a href="adaptation.html" class="active"><strong aria-hidden="true">1.3.</strong> adaptation</a></li></ol></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">2.</strong> scheduling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -125,9 +125,51 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="scaling-distributed-training-with-adaptive-summation"><a class="header" href="#scaling-distributed-training-with-adaptive-summation">Scaling distributed training with adaptive summation</a></h1>
+<h1 id="adaptation-调研"><a class="header" href="#adaptation-调研">Adaptation 调研</a></h1>
+<p>分布式训练的参数调整基本有以下共识：</p>
+<ul>
+<li>learning rate 需要根据 batch size 调整，以保证训练速度和收敛速度</li>
+<li>learning rate 需要在不同的训练阶段进行调整以保证收敛速度
+这个方向早期已经有比较多的研究，包括</li>
+<li>Adam 2015，在 variance 较大时使用较小的 lr</li>
+<li>LARS 2017，在每一层上根据 wieghts 和 gradient 适配 lr</li>
+<li>LARM 2019，LARS + Adam</li>
+</ul>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>最新的一些参数适配相关的研究进展：</p>
+<table><thead><tr><th>方法</th><th>年份</th><th>适用</th><th>作用于</th><th>Key Idea</th><th>会议</th><th>开源</th></tr></thead><tbody>
+<tr><td>GNS</td><td>2018</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>K-FAC</td><td>2019</td><td>-</td><td>gradients</td><td>Gradient second-order</td><td>cvpr2019</td><td></td></tr>
+<tr><td>AdaScale</td><td>2020</td><td>SGD</td><td>lr</td><td>Gradient variance</td><td>ICML2020</td><td></td></tr>
+<tr><td>Resource Elasticity...</td><td>2020</td><td>tf</td><td>framework</td><td>Worker performance</td><td>mlsys2020</td><td></td></tr>
+<tr><td>Kungfu</td><td>2020</td><td>tf/torch</td><td>-</td><td>implementation</td><td>osdi20</td><td><a href="https://github.com/lsds/KungFu">KungFu</a></td></tr>
+<tr><td>Pollux</td><td>2021</td><td></td><td></td><td></td><td>osdi21</td><td><a href="https://github.com/petuum/adaptdl">adaptdl</a></td></tr>
+<tr><td>Adasum</td><td>2021</td><td>Momentum-SGD, Adam, and LAMB</td><td>gradients</td><td>combine gradient</td><td>mlsys2021</td><td><a href="https://github.com/horovod/horovod">horovod</a></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>
+<p>An Empirical Model of Large-Batch Training
+Sam McCandlish et al. OpenAI
+总结：文章提出了 gradient noise scale (GNS) 指标，</p>
+<ul>
+<li>GNS 较小，保持 batch size</li>
+<li>GNS 较大，增大 batch size
+GNS 定义如下：</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">i</span><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">e</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.767331em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord mathnormal">G</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mord">Σ</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>其中：</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">G</span></span></span></span> true gradient</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span> true Hessian at parameter values</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Σ</span></span></span></span>  covariance matrix</li>
+</ul>
+<h3 id="adascale-sgd-a-scale-invariant-algorithm-for-distributed-training"><a class="header" href="#adascale-sgd-a-scale-invariant-algorithm-for-distributed-training">AdaScale SGD: A Scale-Invariant Algorithm for Distributed Training</a></h3>
+<p>Tyler B. Johnson et al. APPLE</p>
+<p>Key: Gradient variance</p>
+<p>总结：adascale 根据 gradient variance 来调整 learning rate，提供稳定算法保证在不同的 batch size 下都能找到合适的 lr 保证快速收敛。</p>
+<h3 id="scaling-distributed-training-with-adaptive-summation"><a class="header" href="#scaling-distributed-training-with-adaptive-summation">Scaling distributed training with adaptive summation</a></h3>
 <p>Saeed Maleki et al. Microsoft Research</p>
-<h3 id="key-point"><a class="header" href="#key-point">Key point</a></h3>
+<p>总结：adasum 利用 gradients 自身的数学性质，提出了一种新的 combine 方法，使得 merge 结果受 outlier 影响较小，更加“合理”，从而加快收敛。
+算法公式</p>
 <p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9084399999999999em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.714em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.20772em;"><span class="overlay" style="height:0.714em;width:0.471em;"><svg width='0.471em' height='0.714em' style='width:0.471em' viewBox='0 0 471 714' preserveAspectRatio='xMinYMin'><path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 8.667 1.667 12 5
 3.333 2.667 6.667 9 10 19 6.667 24.667 20.333 43.667 41 57 7.333 4.667 11
 10.667 11 18 0 6-1 10-3 12s-6.667 5-14 9c-28.667 14.667-53.667 35.667-75 63
@@ -183,18 +225,37 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 -7 1c-4.667 0-9.167-1.833-13.5-5.5S337 184 337 178c0-12.667 15.667-32.333 47-59
 H213l-171-1c-8.667-6-13-12.333-13-19 0-4.667 4.333-11.333 13-20h359
 c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>示意图</p>
 <p align="center"> <img src="./assets/adasum.png" /> </p>
-<h3 id="reference"><a class="header" href="#reference">Reference</a></h3>
-<p><a href="https://horovod.readthedocs.io/en/stable/adasum_user_guide_include.html">AdaSum with Horovod</a></p>
+<h3 id="large-scale-distributed-second-order-optimization-using-kronecker-factored-approximate-curvature-for-deep-convolutional-neural-networks"><a class="header" href="#large-scale-distributed-second-order-optimization-using-kronecker-factored-approximate-curvature-for-deep-convolutional-neural-networks">Large-Scale Distributed Second-Order Optimization Using Kronecker-Factored Approximate Curvature for Deep Convolutional Neural Networks</a></h3>
+<p>Kazuki Osawa et al. Tokyo Institute of Technology, NVIDIA</p>
+<p>Key: Gradient second-order metrics</p>
+<p>总结：通过计算 Fisher 矩阵二阶信息来更新梯度，每一步的计算速度会慢于sgd，但收敛所需步数减少，特别是在large scale 的场景，整体效率接近。</p>
+<h3 id="resource-elasticity-in-distributed-deep-learning"><a class="header" href="#resource-elasticity-in-distributed-deep-learning">Resource Elasticity in Distributed Deep Learning</a></h3>
+<p>Andrew Or et al. Princeton University, Google AI</p>
+<p>autoscaling engine/system</p>
+<p>总结：文章对分布式场景深度学习场景下的弹性系统进行了比较全面的梳理，着墨较多在弹性触发条件，但是对系统实现没有什么深入描述，这块创新性存疑。文中提到了依赖 tensorflow 和 horovod，姑且认为，默认实现方案为 horovod 吧。
+文中涉及到了类似慢节点检测的机制（STRAGGLER DETECTION）。</p>
+<h3 id="kungfu-making-training-in-distributed-machine-learning-adaptive"><a class="header" href="#kungfu-making-training-in-distributed-machine-learning-adaptive">KungFu: Making Training in Distributed Machine Learning Adaptive</a></h3>
+<p>Luo Mai et al. Imperial College London</p>
+<p>总结：kungfu 提供了一个统一的框架/库用来在分布式训练场景下进行不同 adaptation 操作，包括 api、monitor、control 等部分。</p>
+<ul>
+<li>提供 adaption policies 来定义不同 adaption</li>
+<li>内置 monitoring，使得依赖各种 metric 做 adapt 决策变得容易</li>
+<li>分布式参数 adpating 机制：提供弹性、异步 collective</li>
+</ul>
+<h3 id="pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning"><a class="header" href="#pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning">Pollux: Co-adaptive Cluster Scheduling for Goodput-Optimized Deep Learning</a></h3>
+<p>Aurick Qiao et al. Petuum, Inc, CMU, UCB, MBZUAI.</p>
+<p>总结：提出 goodput 指标用于计算优化配置，包括资源和参数 lr、bs。兼容其他如 adascale 策略。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="pollux.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="adasum.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="adaptation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="scheduling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -203,10 +264,10 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="pollux.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="adasum.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="adaptation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="scheduling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
