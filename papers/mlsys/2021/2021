@@ -1,0 +1,279 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Book</title>
+
+
+    
+    
+
+    <!-- Bootstrap CSS -->
+    <!-- https://codepen.io/surjithctly/pen/PJqKzQ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/static/menus/css/menus.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+      "tex2jax": {
+        "inlineMath": [["$","$"], ["\\(","\\)"]],
+        "displayMath": [["\\[","\\]"]],
+        "processEscapes": true
+      }
+    }
+    );
+    </script>
+
+    <style>
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #333;
+          color: #eee;
+        }
+      }
+
+      .btn-spacer {
+        margin: 2px;
+      }
+
+      .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #eee;
+        color: black;
+      }
+
+  
+    </style>
+
+  </head>
+  
+
+
+    
+    <body>
+        
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler6" aria-controls="navbarToggler6" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler6">
+        <a class="navbar-brand" href="/">MLSys Proceedings</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+                      <li class="nav-item">
+                <a class="nav-link" href="/admin/login/?next=/admin/"><i class="fas fa-sign-in-alt" title="Login"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/logout/?nextp=/admin"><i class="fas fa-sign-out-alt" title="Logout"></i></a>
+            </li>
+
+        </ul>
+        
+        <form class="form-inline my-2 my-lg-0" method="get" role="search" action="/papers/search">
+            
+            <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search" id="navsearch">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+        </form>
+    </div>
+</nav>
+
+<br>
+
+
+
+    
+<div class="container-fluid">
+    <div class="col">
+        <h4>Proceedings of Machine Learning and Systems 3  (MLSys 2021)</h4>
+        
+            Edited by: <i>A. Smola and A. Dimakis and I. Stoica</i>
+        
+        <hr style="background-color:gray;">
+        <ul>
+            
+                <li><a href="/paper/2021/hash/013d407166ec4fa56eb1e1f8cbe183b9-Abstract.html">Boveda: Building an On-Chip Deep Learning Memory Hierarchy Brick by Brick</a> <i>Isak Edo Vivancos, Sayeh Sharify, Daniel Ly-Ma, Ameer Abdelhadi, Ciaran Bannon, Milos Nikolic, Mostafa Mahmoud, Alberto Delmas Lascorz, Gennady Pekhimenko, Andreas Moshovos</i></li>
+            
+                <li><a href="/paper/2021/hash/02522a2b2726fb0a03bb19f2d8d9524d-Abstract.html">To Bridge Neural Network Design and Real-World Performance: A Behaviour Study for Neural Networks</a> <i>Xiaohu Tang, Shihao Han, Li Lyna Zhang, Ting Cao, Yunxin Liu</i></li>
+            
+                <li><a href="/paper/2021/hash/182be0c5cdcd5072bb1864cdee4d3d6e-Abstract.html">Cortex: A Compiler for Recursive Deep Learning Models</a> <i>Pratik Fegade, Tianqi Chen, Phillip Gibbons, Todd Mowry</i></li>
+            
+                <li><a href="/paper/2021/hash/1d7f7abc18fcb43975065399b0d1e48e-Abstract.html">Adaptive Gradient Communication via Critical Learning Regime Identification</a> <i>Saurabh Agarwal, Hongyi Wang, Kangwook Lee, Shivaram Venkataraman, Dimitris Papailiopoulos</i></li>
+            
+                <li><a href="/paper/2021/hash/28dd2c7955ce926456240b2ff0100bde-Abstract.html">EXPLORING THE LIMITS OF CONCURRENCY IN ML TRAINING ON GOOGLE TPUS</a> <i>Sameer Kumar, Yu Wang, Cliff Young, James Bradbury, Naveen Kumar, Dehao Chen, Andy Swing</i></li>
+            
+                <li><a href="/paper/2021/hash/2a79ea27c279e471f4d180b08d62b00a-Abstract.html">Lost in Pruning: The Effects of Pruning Neural Networks beyond Test Accuracy</a> <i>Lucas Liebenwein, Cenk Baykal, Brandon Carter, David Gifford, Daniela  Rus</i></li>
+            
+                <li><a href="/paper/2021/hash/32bb90e8976aab5298d5da10fe66f21d-Abstract.html">Learning Fitness Functions for Machine Programming</a> <i>Shantanu Mandal, Todd Anderson, Javier Turek, Justin Gottschlich, Shengtian Zhou, Abdullah Muzahid</i></li>
+            
+                <li><a href="/paper/2021/hash/3636638817772e42b59d74cff571fbb3-Abstract.html">Accelerating SLIDE Deep Learning on Modern CPUs: Vectorization, Quantizations, Memory Optimizations, and More</a> <i>Shabnam Daghaghi, Nicholas Meisburger, Mengnan Zhao, Anshumali Shrivastava</i></li>
+            
+                <li><a href="/paper/2021/hash/38b3eff8baf56627478ec76a704e9b52-Abstract.html">IOS: Inter-Operator Scheduler for CNN Acceleration</a> <i>Yaoyao Ding, Ligeng Zhu, Zhihao Jia, Gennady Pekhimenko, Song Han</i></li>
+            
+                <li><a href="/paper/2021/hash/3def184ad8f4755ff269862ea77393dd-Abstract.html">A Deep Learning Based Cost Model for Automatic Code Optimization</a> <i>Riyadh Baghdadi, Massinissa  Merouani, Mohamed-Hicham  LEGHETTAS, Kamel Abdous, Taha Arbaoui,  Karima BENATCHBA, Saman amarasinghe</i></li>
+            
+                <li><a href="/paper/2021/hash/45fbc6d3e05ebd93369ce542e8f2322d-Abstract.html">Don&#x27;t Forget to Sign the Gradients!</a> <i>Omid Aramoon, Pin-Yu Chen, Gang Qu</i></li>
+            
+                <li><a href="/paper/2021/hash/4e732ced3463d06de0ca9a15b6153677-Abstract.html">Nimble: Efficiently Compiling Dynamic Neural Networks for Model Inference</a> <i>Haichen Shen, Jared Roesch, Zhi Chen, Wei Chen, Yong Wu, Mu Li, Vin Sharma, Zachary Tatlock, Yida Wang</i></li>
+            
+                <li><a href="/paper/2021/hash/5f93f983524def3dca464469d2cf9f3e-Abstract.html">Rethinking Floating Point Overheads for Mixed Precision DNN Accelerators</a> <i>Hamzah Abdelaziz, ali shafiee, Jong Hoon Shin, Ardavan Pedram, Joseph Hassoun</i></li>
+            
+                <li><a href="/paper/2021/hash/5fd0b37cd7dbbb00f97ba6ce92bf5add-Abstract.html">Swift for TensorFlow: A portable, flexible platform for deep learning</a> <i>Brennan Saeta, Denys Shabalin</i></li>
+            
+                <li><a href="/paper/2021/hash/65ded5353c5ee48d0b7d48c591b8f430-Abstract.html">Equality Saturation for Tensor Graph Superoptimization</a> <i>Yichen Yang, Phitchaya Phothilimthana, Yisu Wang, Max Willsey, Sudip Roy, Jacques Pienaar</i></li>
+            
+                <li><a href="/paper/2021/hash/6c8349cc7260ae62e3b1396831a8398f-Abstract.html">PipeMare: Asynchronous Pipeline Parallel DNN Training</a> <i>Bowen Yang, Jian Zhang, Jonathan  Li, Christopher Re, Christopher Aberger, Christopher De Sa</i></li>
+            
+                <li><a href="/paper/2021/hash/6ea9ab1baa0efb9e19094440c317e21b-Abstract.html">An Efficient Statistical-based Gradient Compression Technique for Distributed Training Systems</a> <i>Ahmed M. Abdelmoniem, Ahmed Elzanaty, Mohamed-Slim  Alouini , Marco Canini</i></li>
+            
+                <li><a href="/paper/2021/hash/73278a4a86960eeb576a8fd4c9ec6997-Abstract.html">Value Learning for Throughput Optimization of Deep Learning Workloads</a> <i>Benoit Steiner, Chris Cummins, Horace He, Hugh Leather</i></li>
+            
+                <li><a href="/paper/2021/hash/757b505cfd34c64c85ca5b5690ee5293-Abstract.html">Scaling Distributed Training with Adaptive Summation</a> <i>Saeed Maleki, Madan Musuvathi, Todd Mytkowicz, Olli Saarikivi, Tianju Xu, Vadim Eksarevskiy, Jaliya Ekanayake, Emad Barsoum</i></li>
+            
+                <li><a href="/paper/2021/hash/82161242827b703e6acf9c726942a1e4-Abstract.html">Learning on Distributed Traces for Data Center Storage Systems</a> <i>Giulio Zhou, Martin Maas</i></li>
+            
+                <li><a href="/paper/2021/hash/84d9ee44e457ddef7f2c4f25dc8fa865-Abstract.html">Pufferfish: Communication-efficient Models At No Extra Cost</a> <i>Hongyi Wang, Saurabh Agarwal, Dimitris Papailiopoulos</i></li>
+            
+                <li><a href="/paper/2021/hash/85d8ce590ad8981ca2c8286f79f59954-Abstract.html">A Learned Performance Model for Tensor Processing Units</a> <i>Sam Kaufman, Phitchaya Phothilimthana, Yanqi Zhou, Charith Mendis, Sudip Roy, Amit Sabne, Mike Burrows</i></li>
+            
+                <li><a href="/paper/2021/hash/8613985ec49eb8f757ae6439e879bb2a-Abstract.html">Towards Scalable Distributed Training of Deep Learning on Public Cloud Clusters</a> <i>Shaohuai Shi, Xianhao Zhou, Shutao Song, Xingyao Wang, Zilin Zhu, Xue Huang, Xinan Jiang, Feihu Zhou, Zhenyu Guo, Liqiang Xie, Rui Lan, Xianbin Ouyang, Yan Zhang, Jieqian Wei, Jing Gong, Weiliang  Lin, Ping Gao, Peng Meng, Xiaomin Xu, Chenyang Guo, Bo Yang, Zhibo Chen, Yongjian Wu, Xiaowen Chu</i></li>
+            
+                <li><a href="/paper/2021/hash/8f14e45fceea167a5a36dedd4bea2543-Abstract.html">ModularNAS: Towards Modularized and Reusable Neural Architecture Search</a> <i>Yunfeng Lin, Guilin Li, Xing Zhang, Weinan Zhang, Bo Chen, Ruiming Tang, Zhenguo Li, Jiashi Feng, Yong Yu</i></li>
+            
+                <li><a href="/paper/2021/hash/92cc227532d17e56e07902b254dfad10-Abstract.html">FLAML: A Fast and Lightweight AutoML Library</a> <i>Chi Wang, Qingyun Wu, Markus Weimer, Erkang Zhu</i></li>
+            
+                <li><a href="/paper/2021/hash/979d472a84804b9f647bc185a877a8b5-Abstract.html">TT-Rec: Tensor Train Compression for Deep Learning Recommendation Models</a> <i>Chunxing Yin, Bilge Acun, Carole-Jean Wu, Xing Liu</i></li>
+            
+                <li><a href="/paper/2021/hash/98dce83da57b0395e163467c9dae521b-Abstract.html">SUOD: Accelerating Large-Scale Unsupervised Heterogeneous Outlier Detection</a> <i>Yue Zhao, Xiyang Hu, Cheng Cheng, Cong Wang, Changlin Wan, Wen Wang, Jianing Yang, Haoping Bai, Zheng Li, Cao Xiao, Yunlong Wang, Zhi Qiao, Jimeng Sun, Leman Akoglu</i></li>
+            
+                <li><a href="/paper/2021/hash/9b8619251a19057cff70779273e95aa6-Abstract.html">Pipelined Backpropagation at Scale: Training Large Models without Batches</a> <i>Atli Kosson, Vitaliy Chiley, Abhinav Venigalla, Joel Hestness, Urs Koster</i></li>
+            
+                <li><a href="/paper/2021/hash/9f61408e3afb633e50cdf1b20de6f466-Abstract.html">Fluid: Resource-aware Hyperparameter Tuning Engine</a> <i>Peifeng Yu, Jiachen Liu, Mosharaf Chowdhury</i></li>
+            
+                <li><a href="/paper/2021/hash/a3c65c2974270fd093ee8a9bf8ae7d0b-Abstract.html">MicroNets: Neural Network Architectures for Deploying TinyML Applications on Commodity Microcontrollers</a> <i>Colby Banbury, Chuteng Zhou, Igor Fedorov, Ramon Matas, Urmish Thakker, Dibakar Gope, Vijay Janapa Reddi, Matthew Mattina, Paul Whatmough</i></li>
+            
+                <li><a href="/paper/2021/hash/a3f390d88e4c41f2747bfa2f1b5f87db-Abstract.html">Doping: A technique for Extreme Compression of LSTM Models using Sparse Structured Additive Matrices</a> <i>Urmish Thakker, Paul Whatmough, ZHIGANG LIU, Matthew Mattina, Jesse Beu</i></li>
+            
+                <li><a href="/paper/2021/hash/a5e00132373a7031000fd987a3c9f87b-Abstract.html">A Distributed Graph-Theoretic Framework for Automatic Parallelization in Multi-core Systems</a> <i>Guixiang Ma, Yao Xiao, Theodore Willke, Nesreen Ahmed, Shahin Nazarian, Paul Bogdan</i></li>
+            
+                <li><a href="/paper/2021/hash/a684eceee76fc522773286a895bc8436-Abstract.html">Bit Error Robustness for Energy-Efficient DNN Accelerators</a> <i>David Stutz, Nandhini Chandramoorthy, Matthias Hein, Bernt Schiele</i></li>
+            
+                <li><a href="/paper/2021/hash/a97da629b098b75c294dffdc3e463904-Abstract.html">Horizontally Fused Training Array: An Effective Hardware Utilization Squeezer for Training Novel Deep Learning Models</a> <i>Shang Wang, Peiming Yang, Yuxuan Zheng, Xin Li, Gennady Pekhimenko</i></li>
+            
+                <li><a href="/paper/2021/hash/b53b3a3d6ab90ce0268229151c9bde11-Abstract.html">Characterizing and Taming Model Instability Across Edge Devices</a> <i>Eyal Cidon, Evgenya Pergament, Zain Asgar, Asaf Cidon, Sachin Katti</i></li>
+            
+                <li><a href="/paper/2021/hash/b73ce398c39f506af761d2277d853a92-Abstract.html">Understanding and Improving Failure Tolerant Training for Deep Learning Recommendation with Partial Recovery</a> <i>Kiwan Maeng, Shivam Bharuka, Isabel Gao, Mark Jeffrey, Vikram Saraph, Bor-Yiing Su, Caroline Trippel, Jiyan Yang, Mike Rabbat, Brandon Lucia, Carole-Jean Wu</i></li>
+            
+                <li><a href="/paper/2021/hash/c0e190d8267e36708f955d7ab048990d-Abstract.html">FirePlace: Placing Firecraker Virtual Machines with Hindsight Imitation</a> <i>Bharathan Balaji, Christopher Kakovitch, Balakrishnan Narayanaswamy</i></li>
+            
+                <li><a href="/paper/2021/hash/c4ca4238a0b923820dcc509a6f75849b-Abstract.html">sensAI: ConvNets Decomposition via Class Parallelism for Fast Inference on Live Data</a> <i>Guanhua Wang, Zhuang Liu, Brandon Hsieh, Siyuan Zhuang, Joseph Gonzalez, Trevor Darrell, Ion Stoica</i></li>
+            
+                <li><a href="/paper/2021/hash/c7e1249ffc03eb9ded908c236bd1996d-Abstract.html">Larq Compute Engine: Design, Benchmark and Deploy State-of-the-Art Binarized Neural Networks</a> <i>Tom Bannink, Adam Hillier, Lukas Geiger, Tim de Bruin, Leon Overweel, Jelmer Neeven, Koen Helwegen</i></li>
+            
+                <li><a href="/paper/2021/hash/c81e728d9d4c2f636f067f89cc14862c-Abstract.html">Wavelet: Efficient DNN Training with Tick-Tock Scheduling</a> <i>Guanhua Wang, Kehan Wang, Kenan Jiang, XIANGJUN LI, Ion Stoica</i></li>
+            
+                <li><a href="/paper/2021/hash/c9e1074f5b3f9fc8ea15d152add07294-Abstract.html">Data Movement Is All You Need: A Case Study on Optimizing Transformers</a> <i>Andrei Ivanov, Nikoli Dryden, Tal Ben-Nun, Shigang Li, Torsten Hoefler</i></li>
+            
+                <li><a href="/paper/2021/hash/ca46c1b9512a7a8315fa3c5a946e8265-Abstract.html">Scaling Polyhedral Neural Network Verification on GPUs</a> <i>Christoph Müller , François Serre, Gagandeep Singh, Markus Püschel, Martin Vechev</i></li>
+            
+                <li><a href="/paper/2021/hash/cfecdb276f634854f3ef915e2e980c31-Abstract.html">Accounting for Variance in Machine Learning Benchmarks</a> <i>Xavier Bouthillier, Pierre Delaunay, Mirko Bronzi, Assya Trofimov, Brennan Nichyporuk, Justin Szeto, Nazanin Mohammadi Sepahvand, Edward Raff, Kanika Madan, Vikram Voleti, Samira Ebrahimi Kahou, Vincent Michalski, Tal Arbel, Chris Pal, Gael Varoquaux, Pascal Vincent</i></li>
+            
+                <li><a href="/paper/2021/hash/d1f491a404d6854880943e5c3cd9ca25-Abstract.html">Amazon SageMaker Debugger: A System for Real-Time Insights into Machine Learning Model Training</a> <i>Nathalie Rauschmayr, Vikas Kumar, Rahul Huilgol, Andrea Olgiati, Satadal Bhattacharjee, Nihal Harish, Vandana Kannan, Amol Lele, Anirudh Acharya, Jared Nielsen, Lakshmi Ramakrishnan, Ishan  Bhatt, Kohen Chia, Neelesh Dodda, Zhihan Li, Jiacheng Gu, Miyoung Choi, Balajee Nagarajan, Jeffrey Geevarghese, Denis Davydenko, Sifei Li, Lu Huang, Edward Kim, Tyler Hill, Krishnaram Kenthapadi</i></li>
+            
+                <li><a href="/paper/2021/hash/d1fe173d08e959397adf34b1d77e88d7-Abstract.html">RL-Scope: Cross-stack Profiling for Deep Reinforcement Learning Workloads</a> <i>James Gleeson, Moshe Gabel, Gennady Pekhimenko, Eyal de Lara, Srivatsan Krishnan, Vijay Janapa Reddi</i></li>
+            
+                <li><a href="/paper/2021/hash/d2ddea18f00665ce8623e36bd4e3c7c5-Abstract.html">TensorFlow Lite Micro: Embedded Machine Learning for TinyML Systems</a> <i>Robert David, Jared Duke, Advait Jain, Vijay Janapa Reddi, Nat Jeffries, Jian Li, Nick Kreeger, Ian Nappier, Meghna Natraj, Tiezhen Wang, Pete Warden, Rocky Rhodes</i></li>
+            
+                <li><a href="/paper/2021/hash/d9d4f495e875a2e075a1a4a6e1b9770f-Abstract.html">ByzShield: An Efficient and Robust System for Distributed Training</a> <i>Konstantinos Konstantinidis, Aditya Ramamoorthy</i></li>
+            
+                <li><a href="/paper/2021/hash/eae27d77ca20db309e056e3d2dcd7d69-Abstract.html">In-network Aggregation for Shared Machine Learning Clusters</a> <i>Nadeen Gebara, Manya Ghobadi, Costa Paolo</i></li>
+            
+                <li><a href="/paper/2021/hash/ec8956637a99787bd197eacd77acce5e-Abstract.html">MicroRec: Efficient Recommendation Inference by Hardware and Data Structure Solutions</a> <i>Wenqi Jiang, Zhenhao He, Shuai Zhang, Thomas B. Preußer, Kai Zeng, Liang Feng, Jiansong Zhang, Tongxuan Liu, Yong Li , Jingren Zhou, Ce Zhang, Gustavo Alonso</i></li>
+            
+                <li><a href="/paper/2021/hash/f033ab37c30201f73f142449d037028d-Abstract.html">Accelerate Inference of CNNs for Video Analysis While Preserving Exactness Exploiting Activation Sparsity</a> <i>Toshiaki Wakatsuki, Sekitoshi Kanai, Yasuhiro Fujiwara</i></li>
+            
+                <li><a href="/paper/2021/hash/f0935e4cd5920aa6c7c996a5ee53a70f-Abstract.html">VS-Quant: Per-vector Scaled Quantization for Accurate Low-Precision Neural Network Inference</a> <i>Steve Dai, Rangha Venkatesan, Mark Ren, Brian Zimmer, William Dally, Brucek Khailany</i></li>
+            
+                <li><a href="/paper/2021/hash/fa7cdfad1a5aaf8370ebeda47a1ff1c3-Abstract.html">CODE: Compiler-based Neuron-aware Ensemble training</a> <i>Ettore M. G. Trainiti, Thanapon Noraset, David Demeter, Doug Downey, Simone Campanoni</i></li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script>
+        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+          if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+          }
+          var $subMenu = $(this).next(".dropdown-menu");
+          $subMenu.toggleClass('show');
+
+
+          $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass("show");
+          });
+
+
+          return false;
+        });
+    </script>
+  
+  
+
+  <br>
+    
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Name Change Policy</h4>
+                <button type="button pull-right" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Requests for name changes in the electronic proceedings will be accepted with no questions asked. However name changes may cause bibliographic tracking issues. Authors are asked to consider this carefully and discuss it with their co-authors prior to requesting a name change in the electronic proceedings.</p>
+
+<p>Use the "Report an Issue" link to request a name change.</p>
+
+              </div> 
+              <div class="modal-footer">
+
+
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+
+
+  <footer class="footer">
+    <div class="btn-spacer">
+        <a href="https://mlsys.org/Help/Contact?select=Conference">Report an Issue</a>
+        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;        <a href="#" class="modal-link" data-toggle="modal" data-target="#myModal">Name Change Policy</a>
+    </div>
+  </div>
+</footer>
+<div class='hidden'>Do not remove: This comment is monitored to verify that the site is working properly</div>
+<!-- Do not remove: This comment is monitored to verify that the site is working properly -->
+        <link rel="stylesheet" href="/static/papers/css/papers.css">
+</body>
+</html>
