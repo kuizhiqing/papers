@@ -1,0 +1,3 @@
+#!/bin/bash
+
+gs -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$2" -dFirstPage=$3 -dLastPage=$4 -sDEVICE=pdfwrite "$1"
