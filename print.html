@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="adaptation.html"><strong aria-hidden="true">1.3.</strong> adaptation</a></li></ol></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">2.</strong> scheduling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="adaptation.html"><strong aria-hidden="true">1.3.</strong> adaptation</a></li><li class="chapter-item "><a href="dgc.html"><strong aria-hidden="true">1.4.</strong> dgc</a></li></ol></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">2.</strong> scheduling</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -486,6 +486,59 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <h3 id="pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning-1"><a class="header" href="#pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning-1">Pollux: Co-adaptive Cluster Scheduling for Goodput-Optimized Deep Learning</a></h3>
 <p>Aurick Qiao et al. Petuum, Inc, CMU, UCB, MBZUAI.</p>
 <p>总结：提出 goodput 指标用于计算优化配置，包括资源和参数 lr、bs。兼容其他如 adascale 策略。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="deep-gradient-compression"><a class="header" href="#deep-gradient-compression">Deep Gradient Compression</a></h1>
+<h2 id="deep-gradient-compression-reducing-the-communication-bandwidth-for-distributed-training"><a class="header" href="#deep-gradient-compression-reducing-the-communication-bandwidth-for-distributed-training">Deep Gradient Compression: Reducing the Communication Bandwidth for Distributed Training</a></h2>
+<p>Yujun Lin et. al. Tsinghua University, ICLR 2018</p>
+<p>Gradient exchange require hight bandwidth,</p>
+<ul>
+<li>high latency</li>
+<li>low throughput</li>
+<li>poor connnection</li>
+</ul>
+<p>Since
+<strong>99.9% of the gradient exchange in SGD are redundant,</strong>
+propose
+<strong>deep gradient compression (DGC)</strong>
+to 
+<strong>reduce communication bandwidth</strong>.</p>
+<p>To preserve accuracy,</p>
+<ul>
+<li>momentum correction</li>
+<li>local gradient clipping</li>
+<li>momentum factor masking</li>
+<li>warm-up training</li>
+</ul>
+<p>improving local gradient accumulation and overcomming the staleness effect</p>
+<p>DGC </p>
+<ul>
+<li>pushes the gradient compression ratio to up to 600×</li>
+<li>not need to change the model structure</li>
+<li>no loss of accuracy</li>
+</ul>
+<p>How</p>
+<ul>
+<li>only gradients larger than a threshold are transmitted</li>
+<li>accumulate the rest of the gradients locally, local gradient accumulation is equivalent to increasing the batch size over time</li>
+</ul>
+<p><a href="https://github.com/synxlin/deep-gradient-compression">github</a></p>
+<p>DGC naively perform fine-grained (i.e., element-wise) top-k to select gradients, and thus the communication will suffer from increased allgather data volume as #nodes increases.</p>
+<p>CSC modified the process with coarse-grained sparsification: gradients are partioned into chunks, allreduce the gradient chunks selected based on allreduced L1-norm of each chunk, which gets rid of the allgather and solves the problem.</p>
+<h2 id="optimizing-network-performance-for-distributed-dnn-training-on-gpu-clusters-imagenetalexnet-training-in-15-minutes"><a class="header" href="#optimizing-network-performance-for-distributed-dnn-training-on-gpu-clusters-imagenetalexnet-training-in-15-minutes">Optimizing Network Performance for Distributed DNN Training on GPU Clusters: ImageNet/AlexNet Training in 1.5 Minutes</a></h2>
+<p>Peng Sun et. al. SenseTime 2019</p>
+<p>Communication backend: GradientFlow</p>
+<ul>
+<li>ring-based allreduce</li>
+<li>mixed-precision training</li>
+<li>computation/communication overlap</li>
+<li>lazy allreduce: fusing multiple communication operations</li>
+<li>coarse-grained sparse communication: only transmitting important gradient chunks</li>
+</ul>
+<p>and also,</p>
+<ul>
+<li>momentum SGD correction</li>
+<li>warm-up dense training</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <h1 id="scheduling"><a class="header" href="#scheduling">Scheduling</a></h1>
 <h2 id="osdi-2021"><a class="header" href="#osdi-2021">OSDI 2021</a></h2>
