@@ -20,7 +20,8 @@
 | Kungfu | 2020 | tf/torch | - | implementation | osdi20 | [KungFu](https://github.com/lsds/KungFu) |
 | Pollux | 2021 | | | | osdi21 | [adaptdl](https://github.com/petuum/adaptdl) |
 | Adasum | 2021 | Momentum-SGD, Adam, and LAMB | gradients | combine gradient | mlsys2021 | [horovod](https://github.com/horovod/horovod) |
-| | | | | | |  |
+| DeepPool | 2022 | burst parallelism | gpu multiplexing | mlsys2022 | [DeepPool](https://github.com/DeepPoolML/DeepPool) |
+
 
 An Empirical Model of Large-Batch Training
 Sam McCandlish et al. OpenAI
@@ -31,7 +32,6 @@ GNS 定义如下：
 
 $$
 B_{noise} = \frac{tr(H\Sigma)}{G^T H G}
-
 $$
 
 其中：
@@ -92,3 +92,26 @@ Aurick Qiao et al. Petuum, Inc, CMU, UCB, MBZUAI.
 
 总结：提出 goodput 指标用于计算优化配置，包括资源和参数 lr、bs。兼容其他如 adascale 策略。
 
+### Efficient Strong Scaling Through Burst Parallel Training
+Seo Jin Park et al.
+
+DeepPool key ideas: 引入 foreground/background jobs
+* burst parallelism
+* GPU multiplixing ： gpu 共享
+
+batch-optimal scaling : find (throughtput , sample efficienncy) for best time to accuracy
+* Optimizing time-to-accuracy requires small per-GPU batches at large scale
+* Strong scaling and small per-GPU batches are more effective with fast networks
+* None of the approaches achieve perfect linear scaling
+
+实现特点：
+* 控制粒度到 layer 级别
+* 针对静态图，生成 parallel training plan
+* stage 级别分配 gpu
+* backgroud job 为单机低优任务，现实场景中可能比较难有这样类型任务
+
+总结：依靠并行调度和 gpu 共享技术，引入foreground/background 区分任务优先级，计算最优资源需求和参数配置以获得高资源利用率和任务完成时效。
+有点偏向于自动并行和 gpu 共享的混合产物。
+
+strong scaling :  hold global batch size constant, decrease per-GPU batch size
+weak scaling: increase the global batch size correspondingly, per-GPU batch size kept constant

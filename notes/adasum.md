@@ -16,4 +16,5 @@ $$
 
 ### Reference
 
-[AdaSum with Horovod](https://horovod.readthedocs.io/en/stable/adasum_user_guide_include.html)
+* [AdaSum with Horovod](https://horovod.readthedocs.io/en/stable/adasum_user_guide_include.html)
+* [Arxiv](https://arxiv.org/abs/2006.02924)
