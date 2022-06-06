@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item expanded "><a href="adaptation.html" class="active"><strong aria-hidden="true">1.3.</strong> adaptation</a></li><li class="chapter-item "><a href="dgc.html"><strong aria-hidden="true">1.4.</strong> dgc</a></li></ol></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">2.</strong> scheduling</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="dgc.html"><strong aria-hidden="true">1.3.</strong> dgc</a></li><li class="chapter-item expanded "><a href="adaptation.html" class="active"><strong aria-hidden="true">1.4.</strong> adaptation</a></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">1.5.</strong> scheduling</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -145,7 +145,7 @@
 <tr><td>Kungfu</td><td>2020</td><td>tf/torch</td><td>-</td><td>implementation</td><td>osdi20</td><td><a href="https://github.com/lsds/KungFu">KungFu</a></td></tr>
 <tr><td>Pollux</td><td>2021</td><td></td><td></td><td></td><td>osdi21</td><td><a href="https://github.com/petuum/adaptdl">adaptdl</a></td></tr>
 <tr><td>Adasum</td><td>2021</td><td>Momentum-SGD, Adam, and LAMB</td><td>gradients</td><td>combine gradient</td><td>mlsys2021</td><td><a href="https://github.com/horovod/horovod">horovod</a></td></tr>
-<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>DeepPool</td><td>2022</td><td>burst parallelism</td><td>gpu multiplexing</td><td>mlsys2022</td><td><a href="https://github.com/DeepPoolML/DeepPool">DeepPool</a></td><td></td></tr>
 </tbody></table>
 <p>An Empirical Model of Large-Batch Training
 Sam McCandlish et al. OpenAI
@@ -247,15 +247,39 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
 <h3 id="pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning"><a class="header" href="#pollux-co-adaptive-cluster-scheduling-for-goodput-optimized-deep-learning">Pollux: Co-adaptive Cluster Scheduling for Goodput-Optimized Deep Learning</a></h3>
 <p>Aurick Qiao et al. Petuum, Inc, CMU, UCB, MBZUAI.</p>
 <p>总结：提出 goodput 指标用于计算优化配置，包括资源和参数 lr、bs。兼容其他如 adascale 策略。</p>
+<h3 id="efficient-strong-scaling-through-burst-parallel-training"><a class="header" href="#efficient-strong-scaling-through-burst-parallel-training">Efficient Strong Scaling Through Burst Parallel Training</a></h3>
+<p>Seo Jin Park et al.</p>
+<p>DeepPool key ideas: 引入 foreground/background jobs</p>
+<ul>
+<li>burst parallelism</li>
+<li>GPU multiplixing ： gpu 共享</li>
+</ul>
+<p>batch-optimal scaling : find (throughtput , sample efficienncy) for best time to accuracy</p>
+<ul>
+<li>Optimizing time-to-accuracy requires small per-GPU batches at large scale</li>
+<li>Strong scaling and small per-GPU batches are more effective with fast networks</li>
+<li>None of the approaches achieve perfect linear scaling</li>
+</ul>
+<p>实现特点：</p>
+<ul>
+<li>控制粒度到 layer 级别</li>
+<li>针对静态图，生成 parallel training plan</li>
+<li>stage 级别分配 gpu</li>
+<li>backgroud job 为单机低优任务，现实场景中可能比较难有这样类型任务</li>
+</ul>
+<p>总结：依靠并行调度和 gpu 共享技术，引入foreground/background 区分任务优先级，计算最优资源需求和参数配置以获得高资源利用率和任务完成时效。
+有点偏向于自动并行和 gpu 共享的混合产物。</p>
+<p>strong scaling :  hold global batch size constant, decrease per-GPU batch size
+weak scaling: increase the global batch size correspondingly, per-GPU batch size kept constant</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="adasum.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="dgc.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="dgc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="scheduling.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -264,10 +288,10 @@ c-16-25.333-24-45-24-59z'/></svg></span></span></span></span><span class="vlist-
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="adasum.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="dgc.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="dgc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="scheduling.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
