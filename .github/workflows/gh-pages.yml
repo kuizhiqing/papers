@@ -5,9 +5,9 @@ on:
     branches:
       - main  # Set a branch name to trigger deployment
     paths:
-      - SUMMARY.md
-      - book.toml
-      - '**.md'
+      - notes/SUMMARY.md
+      - notes/book.toml
+      #- '**.md'
 
 jobs:
   deploy:

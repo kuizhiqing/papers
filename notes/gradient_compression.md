@@ -19,7 +19,7 @@ to
 To preserve accuracy,
 * momentum correction
 * local gradient clipping
-* momentum factor masking
+* momentum factor masking, alleviate staleness
 * warm-up training
 
 improving local gradient accumulation and overcomming the staleness effect
@@ -34,7 +34,9 @@ How
 * only gradients larger than a threshold are transmitted
 * accumulate the rest of the gradients locally, local gradient accumulation is equivalent to increasing the batch size over time
 
-[github](https://github.com/synxlin/deep-gradient-compression)
+[deep-gradient-compression github](https://github.com/synxlin/deep-gradient-compression)
+
+[GRACE](https://github.com/sands-lab/grace)
 
 DGC naively perform fine-grained (i.e., element-wise) top-k to select gradients, and thus the communication will suffer from increased allgather data volume as #nodes increases.
 
@@ -56,3 +58,12 @@ and also,
 * momentum SGD correction
 * warm-up dense training
 
+## 1-Bit Stochastic Gradient Descent and its Application to Data-Parallel Distributed Training of Speech DNNs
+
+Frank Seide et. al. MRA, Tsinghua, MR. INTERSPEECH 2014
+
+1-BitSGDwithErrorFeedback
+
+## GRACE: A Compressed Communication Framework for Distributed Machine Learning
+
+Hang Xu et. al. 2021
