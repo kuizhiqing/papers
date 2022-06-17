@@ -8,3 +8,4 @@
     - [auto_parallel](./auto_parallel.md)
     - [gradient_descent](./gradient_descent.md)
     - [scheduling](./scheduling.md)
+    - [dgc code](code/dgc.md)
