@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>dgc code - Papers</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Articles through the ages">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="../adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="../adaptation_learning.html"><strong aria-hidden="true">1.3.</strong> adaptation_learning</a></li><li class="chapter-item "><a href="../gradient_compression.html"><strong aria-hidden="true">1.4.</strong> gradient_compression</a></li><li class="chapter-item "><a href="../auto_parallel.html"><strong aria-hidden="true">1.5.</strong> auto_parallel</a></li><li class="chapter-item "><a href="../gradient_descent.html"><strong aria-hidden="true">1.6.</strong> gradient_descent</a></li><li class="chapter-item "><a href="../scheduling.html"><strong aria-hidden="true">1.7.</strong> scheduling</a></li><li class="chapter-item expanded "><a href="../code/dgc.html" class="active"><strong aria-hidden="true">1.8.</strong> dgc code</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">Papers</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/kuizhiqing/papers" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="deep-gradient-compression"><a class="header" href="#deep-gradient-compression">deep-gradient-compression</a></h1>
+<p><a href="https://github.com/synxlin/deep-gradient-compression">deep-gradient-compression github</a></p>
+<p>配置</p>
+<pre><code class="language-python"># configs/dgc/__init__.py
+</code></pre>
+<p>训练流程</p>
+<pre><code class="language-python"># train.py
+
+from dgc.horovod.optimizer import DistributedOptimizer
+
+# from dgc.compression import DGCCompressor
+compression = configs.train.compression()
+# cpr_parameters 即 dgc 处理的范围
+compression.initialize(cpr_parameters.items())
+
+# from dgc.optim import DGCSGD
+optimizer = configs.train.optimizer(model.parameters())
+
+# Horovod: wrap optimizer with DistributedOptimizer.
+optimizer = DistributedOptimizer(
+    optimizer, named_parameters=model.named_parameters(),
+    compression=compression,
+    backward_passes_per_step=configs.train.num_batches_per_step,
+    op=hvd.Average
+)
+
+# 训练基本循环 zero_grad -&gt; loss.backward -&gt; optimizer.step
+# 特别注意这里多次 backward 才走一次 step 更新
+model.train()
+for step, (inputs, targets) in enumerate(...):
+    optimizer.zero_grad()
+
+    # 这里用了内置循环累积梯度，比直接使用大 batch 剩显存
+    # 注意这个 for 循环，对于 optimizer 里面理解 synchronize 过程非常重要
+    for b in range(0, step_size, batch_size):
+        _inputs = inputs[b:b+batch_size]
+        _targets = targets[b:b+batch_size]
+        _outputs = model(_inputs)
+        _loss = criterion(_outputs, _targets)
+        _loss.mul_(_r_num_batches_per_step)
+        _loss.backward()
+        loss += _loss.item()
+    optimizer.step()
+</code></pre>
+<p>Optimizer</p>
+<pre><code class="language-python"># dgc/horovod/optimizer.py
+
+class _DistributedOptimizer(torch.optim.Optimizer):
+
+    def __init__(self, ...):
+        # 初始化最后注册 通信 hook
+        self._register_hooks()
+        
+    def _register_hooks(self):
+        for param_group in self.param_groups:
+            for p in param_group['params']:
+                if p.requires_grad:
+                    # 注册函数只执行一次，这里 zero grad 不是每次调用 hook
+                    p.grad = p.data.new(p.size()).zero_()
+                    self._requires_update.add(p)
+                    # 创建幽灵 tensor 来累积梯度，节点间同步，直至更新；显存占用翻倍？
+                    p_tmp = p.expand_as(p)
+                    grad_acc = p_tmp.grad_fn.next_functions[0][0]
+                    # 注册 _make_hook 这个关键 hook
+                    grad_acc.register_hook(self._make_hook(p))
+                    self._grad_accs.append(grad_acc)
+
+    def _make_hook(self, p):
+        # 这个 hook 有一个计数器，_allreduce_delay, 根据对象 p 不一样可以取不一样的值
+        # 计数器不为零时跳过，这样可以让 grad 在本地累积，因为这个 hook 是做通信的
+        # 效果为这个 hook 在多次调用才会被执行一次
+        def hook(*ignore):
+            handle, ctx = None, None
+            self._allreduce_delay[p] -= 1
+            if self._allreduce_delay[p] == 0:
+                handle, ctx = self._allreduce_grad_async(p)
+            self._handles[p] = (handle, ctx)
+        return hook
+
+    # 然后主要流程 step
+    def step(self, closure=None):
+        self.synchronize()
+        return super(self.__class__, self).step(closure)
+
+    # step 调用 synchronize, 可以有跳过逻辑
+    def synchronize(self):
+        # 处理 hook 注册不成功，或者说 hook 没有被调用
+        # hook 被调用后会添加 self._handles
+        missing_p = self._requires_update - set(self._handles.keys())
+        for p in missing_p:
+            handle, ctx = self._allreduce_grad_async(p)
+            self._handles[p] = (handle, ctx)
+
+        # handle 为 None 的 hook 跳过又不跳过了？
+        # 需要注意 synchronize 函数每个 step 被调用，但不是每次 backward 都会被调用
+        # 在之前的 train 中有每个 step 会多次 backward，所以 grad 的 hook 会被多次调用，次数匹配
+        # 所以代码执行到这里 handle 应该是一次调用_allreduce_grad_async 如果不是就补上
+        for p, (handle, ctx) in self._handles.items():
+            if handle is None:
+                handle, ctx = self._allreduce_grad_async(p)
+                self._handles[p] = (handle, ctx)
+
+        # for 循环处理异步通信的结果
+        for p, (handle, ctx) in self._handles.items():
+            output = self._synchronize_(handle)
+            # 重置本地累积次数
+            self._allreduce_delay[p] = self.backward_passes_per_step
+            # 解压更新梯度
+            p.grad.set_(self._compression.decompress(output, ctx))
+
+        # 执行完毕，清理
+        self._handles.clear()
+
+    # 异步通信的 op，核心逻辑在 compression 中
+    def _allreduce_grad_async(self, p):
+        name = self._parameter_names.get(p)
+        tensor_compressed, ctx = self._compression.compress(p.grad, name)
+
+        handle = self._communicate_(tensor_compressed, name=name, op=self.op)
+        return handle, ctx
+
+</code></pre>
+<ul>
+<li>hook 函数是一次注册，多次调用，所以 <code>self._handles</code> 会不断被填充，每次 synchronize 后可以被 clear</li>
+</ul>
+<pre><code class="language-python"># dgc/compression.py
+
+class DGCCompressor:
+    def __init__(self, ...):
+        self.attributes = {}
+
+    def initialize(self, named_parameters):
+        # 工作范围
+        for name, param in named_parameters:
+            self.attributes[name] = (numel, shape, num_selects, num_samples, top_k_samples, sample_stride)
+
+    def _sparsify(self, tensor, name):
+        # 选出稀疏的 tensor 去通信
+        importance = tensor.abs()
+        mask = torch.ge(importance, threshold)
+        indices = mask.nonzero().view(-1)
+        num_indices = indices.numel()
+        # 这里实现上有个 for 循环确保选出的 topk 满足要求
+        indices = indices[:num_selects]
+        values = tensor[indices]
+        return values, indices, numel, shape, num_selects
+
+    def compress(self, tensor, name):
+        if self.compress_ratio &lt; 1.0 and name in self.attributes:
+            # compress
+            tensor_compensated = self.memory.compensate(tensor, name, accumulate=True)
+            values, indices, numel, shape, num_selects = self._sparsify(tensor_compensated, name)
+            self.memory.update(name, (indices, ))
+            return tensor, ctx
+        else:
+            return tensor, ctx
+
+    def decompress(self, tensor, ctx):
+        name, numel, shape, vdtype, idtype, grad = ctx
+        if self.compress_ratio &lt; 1.0 and name in self.attributes:
+            # 这里的 tensor 是个 tuple
+            # decompress
+            values, indices = tensor
+            # 把同步回来的稀疏 tensor 对应位置更新
+            # accumulate=True 处理 indices 中有重复的情况
+            grad.zero_().index_put_([indices], values, accumulate=True)
+            if self.op == Average:
+                grad.mul_(1. / self.world_size)
+            return grad.view(shape)
+        else:
+            return self.memory.compensate(tensor, name, accumulate=False)
+
+    # optimizer _communicate_
+    def communicate(self, tensor_compressed, name, op):
+        # 两个分支
+        if self.compress_ratio &lt; 1.0 and name in self.attributes:
+            # dgc 分支，tensor_compressed 是 tuple，各个节点选的 topk index 不相同
+            # 所以使用 allgather 交换，然后各自解压、更新
+            return [allgather_async_(t, name=f'{name}.t{e}')
+                    for e, t in enumerate(tensor_compressed)]
+        else:
+            # 普通分支，直接 allreduce 完整 tensor
+            return allreduce_async_(tensor_compressed, name=name, op=op)
+
+    # optimizer _synchronize_
+    def synchronize(self, handle):
+        # from horovod.torch.mpi_ops import synchronize as synchronize_
+        if isinstance(handle, (tuple, list)):
+            return [synchronize_(h) for h in handle]
+        else:
+            return synchronize_(handle)
+</code></pre>
+<p>为了保证精度文章中介绍了下面几种补偿策略</p>
+<ul>
+<li>momentum correction</li>
+<li>local gradient clipping</li>
+<li>momentum factor masking, alleviate staleness</li>
+<li>warm-up training</li>
+</ul>
+<p>前三种策略在 Memory 实现</p>
+<pre><code class="language-python"># dgc/memory.py
+
+class DGCSGDMemory(Memory):
+
+    def compensate(self, grad, name, accumulate=True):
+        if self.gradient_clipping is not None:
+            grad = self.gradient_clipping(grad)
+        mmt = self.momentums[name]
+        if accumulate:
+            # Momentum Correction
+            vec = self.velocities[name]
+            if self.nesterov:
+                mmt.add_(grad).mul_(self.momentum)
+                vec.add_(mmt).add_(grad)
+            else:
+                mmt.mul_(self.momentum).add_(grad)
+                vec.add_(mmt)
+            return vec
+        else:
+            if self.nesterov:
+                mmt.add_(grad).mul_(self.momentum)
+                return mmt.add(grad)
+            else:
+                mmt.mul_(self.momentum).add_(grad)
+                return mmt.clone()  # TODO: save this clone
+
+    def update(self, name, ctx):
+        indices = ctx[0]
+        if self.momentum_masking:
+            self.momentums[name].view(-1).index_fill_(0, indices, 0)
+        self.velocities[name].view(-1).index_fill_(0, indices, 0)
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../scheduling.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../scheduling.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
