@@ -10,26 +10,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
     </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="adaptation_learning.html"><strong aria-hidden="true">1.3.</strong> adaptation_learning</a></li><li class="chapter-item expanded "><a href="gradient_compression.html" class="active"><strong aria-hidden="true">1.4.</strong> gradient_compression</a></li><li class="chapter-item "><a href="auto_parallel.html"><strong aria-hidden="true">1.5.</strong> auto_parallel</a></li><li class="chapter-item "><a href="gradient_descent.html"><strong aria-hidden="true">1.6.</strong> gradient_descent</a></li><li class="chapter-item "><a href="scheduling.html"><strong aria-hidden="true">1.7.</strong> scheduling</a></li><li class="chapter-item "><a href="code/dgc.html"><strong aria-hidden="true">1.8.</strong> dgc code</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../papers.html"><strong aria-hidden="true">1.</strong> papers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../pollux.html"><strong aria-hidden="true">1.1.</strong> pollux</a></li><li class="chapter-item "><a href="../adasum.html"><strong aria-hidden="true">1.2.</strong> adasum</a></li><li class="chapter-item "><a href="../adaptation_learning.html"><strong aria-hidden="true">1.3.</strong> adaptation_learning</a></li><li class="chapter-item "><a href="../gradient_descent.html"><strong aria-hidden="true">1.4.</strong> gradient_descent</a></li><li class="chapter-item "><a href="../auto_parallel.html"><strong aria-hidden="true">1.5.</strong> auto_parallel</a></li><li class="chapter-item "><a href="../scheduling.html"><strong aria-hidden="true">1.6.</strong> scheduling</a></li><li class="chapter-item expanded "><a href="../gradient_compression/gradient_compression.html" class="active"><strong aria-hidden="true">1.7.</strong> gradient_compression</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../gradient_compression/dgc.html"><strong aria-hidden="true">1.7.1.</strong> dgc</a></li><li class="chapter-item "><a href="../gradient_compression/csc.html"><strong aria-hidden="true">1.7.2.</strong> csc</a></li></ol></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -104,7 +104,7 @@
                     <h1 class="menu-title">Papers</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         <a href="https://github.com/kuizhiqing/papers" title="Git repository" aria-label="Git repository">
@@ -125,73 +125,27 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-<h1 id="deep-gradient-compression"><a class="header" href="#deep-gradient-compression">Deep Gradient Compression</a></h1>
-<h2 id="deep-gradient-compression-reducing-the-communication-bandwidth-for-distributed-training"><a class="header" href="#deep-gradient-compression-reducing-the-communication-bandwidth-for-distributed-training">Deep Gradient Compression: Reducing the Communication Bandwidth for Distributed Training</a></h2>
-<p>Yujun Lin et. al. Tsinghua University, ICLR 2018</p>
-<p>Gradient exchange require hight bandwidth,</p>
-<ul>
-<li>high latency</li>
-<li>low throughput</li>
-<li>poor connnection</li>
-</ul>
-<p>Since
-<strong>99.9% of the gradient exchange in SGD are redundant,</strong>
-propose
-<strong>deep gradient compression (DGC)</strong>
-to 
-<strong>reduce communication bandwidth</strong>.</p>
-<p>To preserve accuracy,</p>
-<ul>
-<li>momentum correction</li>
-<li>local gradient clipping</li>
-<li>momentum factor masking, alleviate staleness</li>
-<li>warm-up training</li>
-</ul>
-<p>improving local gradient accumulation and overcomming the staleness effect</p>
-<p>DGC </p>
-<ul>
-<li>pushes the gradient compression ratio to up to 600×</li>
-<li>not need to change the model structure</li>
-<li>no loss of accuracy</li>
-</ul>
-<p>How</p>
-<ul>
-<li>only gradients larger than a threshold are transmitted</li>
-<li>accumulate the rest of the gradients locally, local gradient accumulation is equivalent to increasing the batch size over time</li>
-</ul>
-<p><a href="https://github.com/synxlin/deep-gradient-compression">deep-gradient-compression github</a></p>
-<p><a href="https://github.com/sands-lab/grace">GRACE</a></p>
-<p>DGC naively perform fine-grained (i.e., element-wise) top-k to select gradients, and thus the communication will suffer from increased allgather data volume as #nodes increases.</p>
-<p>CSC modified the process with coarse-grained sparsification: gradients are partioned into chunks, allreduce the gradient chunks selected based on allreduced L1-norm of each chunk, which gets rid of the allgather and solves the problem.</p>
-<h2 id="optimizing-network-performance-for-distributed-dnn-training-on-gpu-clusters-imagenetalexnet-training-in-15-minutes"><a class="header" href="#optimizing-network-performance-for-distributed-dnn-training-on-gpu-clusters-imagenetalexnet-training-in-15-minutes">Optimizing Network Performance for Distributed DNN Training on GPU Clusters: ImageNet/AlexNet Training in 1.5 Minutes</a></h2>
-<p>Peng Sun et. al. SenseTime 2019</p>
-<p>Communication backend: GradientFlow</p>
-<ul>
-<li>ring-based allreduce</li>
-<li>mixed-precision training</li>
-<li>computation/communication overlap</li>
-<li>lazy allreduce: fusing multiple communication operations</li>
-<li>coarse-grained sparse communication: only transmitting important gradient chunks</li>
-</ul>
-<p>and also,</p>
-<ul>
-<li>momentum SGD correction</li>
-<li>warm-up dense training</li>
-</ul>
 <h2 id="1-bit-stochastic-gradient-descent-and-its-application-to-data-parallel-distributed-training-of-speech-dnns"><a class="header" href="#1-bit-stochastic-gradient-descent-and-its-application-to-data-parallel-distributed-training-of-speech-dnns">1-Bit Stochastic Gradient Descent and its Application to Data-Parallel Distributed Training of Speech DNNs</a></h2>
 <p>Frank Seide et. al. MRA, Tsinghua, MR. INTERSPEECH 2014</p>
 <p>1-BitSGDwithErrorFeedback</p>
+<h2 id="deep-gradient-compression-reducing-the-communication-bandwidth-for-distributed-training"><a class="header" href="#deep-gradient-compression-reducing-the-communication-bandwidth-for-distributed-training">Deep Gradient Compression: Reducing the Communication Bandwidth for Distributed Training</a></h2>
+<p>Yujun Lin et. al. Tsinghua University, ICLR 2018</p>
+<p><a href="https://github.com/synxlin/deep-gradient-compression">DGC</a></p>
 <h2 id="grace-a-compressed-communication-framework-for-distributed-machine-learning"><a class="header" href="#grace-a-compressed-communication-framework-for-distributed-machine-learning">GRACE: A Compressed Communication Framework for Distributed Machine Learning</a></h2>
 <p>Hang Xu et. al. 2021</p>
+<p><a href="https://github.com/sands-lab/grace">GRACE</a></p>
+<h2 id="sidco-an-efficient-statistical-based-gradient-compression-technique-for-distributed-training-systems"><a class="header" href="#sidco-an-efficient-statistical-based-gradient-compression-technique-for-distributed-training-systems">SIDCo An Efficient Statistical-based Gradient Compression Technique for Distributed Training Systems</a></h2>
+<p>Ahmed M. Abdelmoniem et. al. CEMSE, KAUST. MLSys 2021</p>
+<p><a href="https://github.com/sands-lab/SIDCo">SIDCo</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="adaptation_learning.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../scheduling.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="auto_parallel.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../gradient_compression/dgc.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -200,10 +154,10 @@ to
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="adaptation_learning.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../scheduling.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="auto_parallel.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../gradient_compression/dgc.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -213,9 +167,9 @@ to
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
     </body>
