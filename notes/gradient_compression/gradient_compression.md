@@ -38,6 +38,11 @@ Ahmed M. Abdelmoniem et. al. CEMSE, KAUST. MLSys 2021
 
 [SIDCo](https://github.com/sands-lab/SIDCo)
 
+## PowerSGD: Practical Low-Rank Gradient Compression for Distributed Optimization
+
+Thijs Vogels et. al. EPFL. NeurIPS 2019
+
+[PowerSGD](https://github.com/epfml/powersgd)
 
 ## Don't Use Large Mini-Batches, Use Local SGD
 
